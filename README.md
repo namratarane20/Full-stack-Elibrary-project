@@ -1,21 +1,21 @@
 # Full-stack-Elibrary-project
 
-# Requirements:
+ Requirements:
 1) Install node js with npm.
 2) Install angular CLI.
 3) Install mysql with wrokbench.
 
-# To run the backend APIs:
+ To run the backend APIs:
 Open Book_Api folder
 Execute below command in terminal
 >> node bookAPI.js
 
-# To run the front end code:
+ To run the front end code:
 Open elibraryProject-V2-enhanced-with-error-handling folder
 Execute below command in terminal
 >> ng serve
 
-# Create databases in mysql workbench:
+ Create databases in mysql workbench:
 
 CREATE DATABASE elibrary;
 
