@@ -3,7 +3,8 @@
  Requirements:
 1) Install node js with npm.
 2) Install angular CLI.
-3) Install mysql with wrokbench.
+3) Install angular material
+4) Install mysql with wrokbench.
 
  To run the backend APIs:
 Open Book_Api folder
