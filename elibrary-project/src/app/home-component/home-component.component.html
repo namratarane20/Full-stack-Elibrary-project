@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+<body>
+
+    <!-- Sidebar -->
+
+
+
+    <div id="addbook" class="w3-modal ">
+        <div class="w3-modal-content w3-animate-zoom">
+            <header class="w3-container modal-header">
+                <span onclick="document.getElementById('addbook').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Add book details</h2>
+            </header>
+            <br>
+            <div class="w3-container" style="text-align: center;">
+                <!-- <label for="first_name">First name</label> -->
+                <label class="required">Book Id</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+                    type="text" [(ngModel)]="addBookId" onfocus="this.value=''"><br> <br>
+                <label class="required">Book Name</label> &nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
+                    [(ngModel)]="addBookName" onfocus="this.value=''"><br><br>
+                <label class="required">Book price</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
+                    [(ngModel)]="addPrice" onfocus="this.value=''"> <br><br>
+                <label>Book author</label>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="text" [(ngModel)]="addAuthor"
+                    onfocus="this.value=''"> <br><br>
+            </div>
+            <footer class="w3-container ">
+                <button (click)="addBook()">Add </button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- <p class="w3-panel w3-green" *ngIf="message">Currently there are more than 2 names!</p> -->
+
+    <div id="updateBookName" class="w3-modal ">
+        <div class="w3-modal-content w3-animate-zoom">
+            <header class="w3-container modal-header">
+                <span onclick="document.getElementById('updateBookName').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Update new book name</h2>
+            </header>
+            <br>
+            <div class="w3-container">
+                <div style="margin-top: 20px; margin-left: 90px;">
+                    <label class="required">Book Id</label> &nbsp; &nbsp; <input type="text" [(ngModel)]="addBookId"
+                    onfocus="this.value=''" placeholder="Enter book id to update">
+                </div>
+               <div style="margin-top: -30px; margin-left: 450px;">
+                <label class="required">Book Name</label> &nbsp; &nbsp; <input type="text" [(ngModel)]="addBookName"
+                onfocus="this.value=''" placeholder="Enert new book name">
+               </div>
+              <br>
+
+            </div>
+            <footer class="w3-container " style="text-align: center;">
+                <button (click)="updateBookName()" class="w3-button w3-light-green w3-round" >Update Book Name</button>
+            </footer>
+            <br>
+        </div>
+    </div>
+
+
+    <div id="deleteBook" class="w3-modal ">
+        <div class="w3-modal-content w3-animate-zoom">
+            <header class="w3-container modal-header">
+                <span onclick="document.getElementById('deleteBook').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Delete book by Id </h2>
+            </header>
+            <div class="w3-container">
+                Book id to delete the book: <input type="text" [(ngModel)]="addBookId" onfocus="this.value=''"><br> <br>
+
+            </div>
+            <footer class="w3-container ">
+                <p style="color: orange;">If you want to confirm delete book click on delete button</p>
+                <button style="background-color: red;">Delete</button>
+                <!-- (click)="deleteBook()" -->
+            </footer>
+        </div>
+    </div>
+
+
+
+    <div id="assignedBook" class="w3-modal ">
+        <div class="w3-modal-content w3-animate-zoom">
+            <header class="w3-container modal-header">
+                <span onclick="document.getElementById('assignedBook').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Assign book to the user (Select bookId and user name)</h2>
+            </header>
+            <div class="w3-container">
+                <div>
+                    <div style="margin-left: 170px; margin-top: 20px;">
+                        <h3>Select Book Id :</h3><input type="text" name="id" list="id" [(ngModel)]="addBookId"
+                            onfocus="this.value=''" placeholder="Add book id">
+                        <datalist id="id">
+                            <option *ngFor="let bookid of bookIdList" value="{{bookid}}">
+
+                        </datalist>
+                    </div>
+                    <div style="margin-left: 500px; margin-top: -70px;">
+                        <h3>Select User Name :</h3><input type="text" name="user" list="user" [(ngModel)]="userName"
+                            onfocus="this.value=''" placeholder="Select user name">
+                        <datalist id="user">
+                            <option *ngFor="let user of userList " value="{{user}}">
+
+                        </datalist>
+                    </div>
+
+                </div>
+
+
+                <!-- Select book id to assign user: <input type="text" [(ngModel)]="addBookId"><br> <br>
+                Select user name: <input type="text" [(ngModel)]="userName"><br> <br> -->
+
+            </div>
+            <br>
+            <div style="text-align: center;">
+                <footer class="w3-container ">
+
+                    <button class="w3-button w3-light-green w3-round"  (click)="assignedBook()">Assign</button>
+                </footer>
+                <br>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div id="block1" class="w3-sidebar w3-light-grey shadowDiv  " style="width:12%;margin-top: -20px;;">
+        <br>
+        <h3 class="w3-bar-item">Actions to perform</h3>
+        <br>
+        <div style="height: 60px;"><button class="w3-button " (click)="displayBooks()">Show Books</button></div>
+        <div style="height: 60px;"><button onclick="document.getElementById('addbook').style.display='block'"
+                class="w3-button ">Add Book</button></div>
+        <!-- <div style="height: 60px;"><button onclick="document.getElementById('updateBookName').style.display='block'"
+                class="w3-button w3-black">Update book name</button></div> -->
+        <div style="height: 60px;"><button onclick="document.getElementById('deleteBook').style.display='block'"
+                class="w3-button ">Delete Book</button></div>
+        <div style="height: 60px;"><button onclick="document.getElementById('assignedBook').style.display='block'"
+                class="w3-button" (click)="allBook()">Assign Book</button></div>
+
+    </div>
+    <h2 style="text-align: center;margin-top: 60px; width: 87%; margin-left: 150px;" id="grad1">Welcome to Library
+        system</h2>
+    <div class="grid-container" style="margin-top: -25px; width: 87%; margin-left: 160px;">
+        <!-- id="block2" -->
+        <!-- this code is to show blocks of book-->
+        <div class="grid-item" *ngFor="let book of completeData">
+            <!-- <td> -->
+            <div class="w3-card-4" style="height: 300px; width: 250px;">
+                <h3 style="background-color: orange">Book Id - {{book.bookid}}</h3>
+                <img src="../../assets/bookCover.jpeg" alt="Alps" style="width:150px;height: 150px;">
+                <div class="w3-container w3-center" fxLayout="column" fxLayoutAlign="space-between center">
+                    <!-- w3-center -->
+                    <div style="font-weight: bold;font-size: 17px;">{{book.bookname}}</div>
+                    <div> {{book.author}}</div>
+                    <div style="color: blue; ">${{book.price}}</div>
+                    <br>
+
+                    <i *ngIf="book.isassigned == false" class="glyphicon glyphicon-trash"
+                        (click)="deleteBook(book.bookid)" style="color: red; font-size: 20px;"></i>
+
+                    &nbsp;&nbsp;    
+                    <i onclick="document.getElementById('updateBookName').style.display='block'" class="fa fa-edit"
+                        style="font-size:20px"></i> &nbsp;&nbsp;
+                    <i *ngIf="book.isassigned" class="fa fa-check-circle" style="font-size:20px;color:green"></i>
+                </div>
+            </div>
+            <!-- </td> -->
+        </div>
+
+        <!-- </table> -->
+
+    </div>
+
+    <!-- Page Content -->
+
+
+</body>
+
+</html>
+
+<!-- 
+<div class="w3-card-4" style="height: 300px;">
+    <img src="https://lh3.googleusercontent.com/proxy/dlm-GBsWPeuvRwsATyS-WyRj560w5F3QaNnKNIdnOu0XjHWpxePOy_Flerb0xiFzP9DfdK8GBvPJWw6ZcTubRoFiPCMLMqF7ZK4"
+        alt="Alps" style="width:150px;height: 200px;">
+    <div class="w3-container w3-center">
+        <h3>{{book.bookname}}</h3>
+        <p>{{book.author}}</p>
+    </div>
+</div> -->
+
+
+
+<!-- <table>
+
+            <tr >
+
+                <td>
+                    <div class="w3-card-4" style="height: 300px;">
+                        <img src="https://lh3.googleusercontent.com/proxy/dlm-GBsWPeuvRwsATyS-WyRj560w5F3QaNnKNIdnOu0XjHWpxePOy_Flerb0xiFzP9DfdK8GBvPJWw6ZcTubRoFiPCMLMqF7ZK4"
+                            alt="Alps" style="width:150px;height: 200px;">
+                        <div class="w3-container w3-center">
+                            <h3></h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;"> </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;"> </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"
+                            style="width:200px; height: 200px;">
+                    </div>
+                </td>
+            </tr>
+        </table> -->
+
+<!-- <div *ngFor="let book of books">
+            <h1>{{book.author}}</h1>
+        </div> -->
+
+<!-- <table > -->
+<!-- <tr>
+                <th>Book Id</th>
+                <th>Book Name</th>
+                <th>Book Author</th>
+                <th>Book Price</th>
+
+            <tr>
+            <tr *ngFor="let book of completeData">
+                <td>{{book.bookid}}</td>
+                <td>{{book.bookname}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.Price}}</td>
+
+            </tr> -->
+
+<!-- ng-repeat="item in items" -->
