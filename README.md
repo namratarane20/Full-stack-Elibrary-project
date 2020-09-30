@@ -19,7 +19,7 @@ Execute below command in terminal
 
 CREATE DATABASE elibrary;
 
-create table elibrary.books(
+CREATE TABLE elibrary.books(
    id INT NOT NULL AUTO_INCREMENT unique,
    bookid VARCHAR(100) NOT NULL,
    bookname VARCHAR(100) NOT NULL,
@@ -30,12 +30,12 @@ create table elibrary.books(
    
 );
 
-  create table elibrary.users(
+  CREATE TABLE elibrary.users(
    username VARCHAR(100) NOT NULL,
    userid VARCHAR(100) NOT NULL
 );
 
-create table elibrary.booksandusers(	
+CREATE TABLE elibrary.booksandusers(	
    assignedbookid VARCHAR(100) NOT NULL,
    username VARCHAR(100) NOT NULL
 );
